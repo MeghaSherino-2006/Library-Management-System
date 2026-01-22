@@ -1,0 +1,34 @@
+
+
+<p *ngIf="loading">Loading books...</p>
+<p *ngIf="errorMsg">{{ errorMsg }}</p>
+
+<div class="page-container">
+  <div class="page-title">Available Books</div>
+  <div class="section-subtitle">Browse books and check availability.</div>
+   <mat-card class="book-card" *ngFor="let book of books">
+  <div class="book-card-grid">
+    <img class="cover" [src]="book.coverUrl" alt="cover" />
+    <div>
+      <div class="book-title">{{ book.title }}</div>
+      <div class="book-subtitle">{{ book.author }} • {{ book.genre }}</div>
+
+      <div class="chips">
+        <span class="chip">Year: {{ book.publishedYear }}</span>
+        <span class="chip" [class.out]="book.availableCopies === 0">
+          Available: {{ book.availableCopies }}/{{ book.totalCopies }}
+        </span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button mat-stroked-button color="primary" [routerLink]="['/books', book.id]">
+        View Details
+      </button>
+    </div>
+
+  </div>
+</mat-card>
+
+</div>
+

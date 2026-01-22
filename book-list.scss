@@ -1,0 +1,73 @@
+.book-card {
+  margin-bottom: 14px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(17, 24, 39, 0.10);
+}
+
+.book-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.book-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.book-subtitle {
+  font-size: 13.5px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.chips {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #eef2ff;
+  color: #3730a3;
+}
+
+.chip.out {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.book-grid {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cover {
+  width: 70px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.info {
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}

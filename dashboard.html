@@ -1,0 +1,79 @@
+<div class="page-container">
+  <div class="page-title">Dashboard</div>
+  <div class="section-subtitle">
+    Overview of library availability and latest borrowing activity.
+  </div>
+
+  <p *ngIf="loading">Loading dashboard...</p>
+
+  <div class="stats-grid" *ngIf="!loading">
+    <mat-card class="stat-card">
+      <div class="stat-icon blue">
+        <mat-icon>menu_book</mat-icon>
+      </div>
+      <div>
+        <div class="stat-title">Total Books</div>
+        <div class="stat-value">{{ totalBooks }}</div>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <div class="stat-icon green">
+        <mat-icon>inventory_2</mat-icon>
+      </div>
+      <div>
+        <div class="stat-title">Available Copies</div>
+        <div class="stat-value">{{ totalAvailable }}</div>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <div class="stat-icon orange">
+        <mat-icon>assignment</mat-icon>
+      </div>
+      <div>
+        <div class="stat-title">Borrowed</div>
+        <div class="stat-value">{{ borrowedCount }}</div>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <div class="stat-icon red">
+        <mat-icon>warning</mat-icon>
+      </div>
+      <div>
+        <div class="stat-title">Overdue</div>
+        <div class="stat-value">{{ overdueCount }}</div>
+      </div>
+    </mat-card>
+  </div>
+
+  <mat-card class="recent-card" *ngIf="!loading">
+    <div class="recent-header">
+      <div>
+        <div class="recent-title">Recent Transactions</div>
+        <div class="recent-sub">Last 5 borrow/return activities</div>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="recent-item" *ngFor="let t of recentTransactions">
+      <div class="left">
+        <div class="tx-title">Book ID: {{ t.bookId }}</div>
+        <div class="tx-sub">
+          Borrowed: {{ t.borrowedDate | date:'mediumDate' }}
+          • Due: {{ t.dueDate | date:'mediumDate' }}
+        </div>
+      </div>
+
+      <div class="status" [class.borrowed]="t.status==='BORROWED'" [class.returned]="t.status==='RETURNED'">
+        {{ t.status }}
+      </div>
+    </div>
+
+    <p *ngIf="recentTransactions.length === 0" style="color:#6b7280; margin: 12px 0 0 0;">
+      No transactions yet.
+    </p>
+  </mat-card>
+</div>
