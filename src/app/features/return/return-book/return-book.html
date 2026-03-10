@@ -1,0 +1,41 @@
+
+
+<p *ngIf="loading">Loading borrowed books...</p>
+<p *ngIf="errorMsg">{{ errorMsg }}</p>
+
+<p *ngIf="!loading && borrowedTransactions.length === 0">
+   No borrowed books currently.
+</p>
+
+<div class="page-container">
+<div class="page-title">Return Books</div>
+  <mat-card
+  *ngFor="let t of borrowedTransactions"
+  style="margin-bottom: 12px;"
+  [ngStyle]="{ 'border-left': t.overdue ? '6px solid red' : '6px solid green' }"
+>
+  <mat-card-title>{{ t.bookTitle }}</mat-card-title>
+  <mat-card-subtitle>
+    Borrowed by: {{ t.memberName }}
+  </mat-card-subtitle>
+
+  <mat-card-content>
+    <p><b>Borrowed:</b> {{ t.borrowedDate | date: 'mediumDate' }}</p>
+    <p><b>Due:</b> {{ t.dueDate | date: 'mediumDate' }}</p>
+    <p><b>Status:</b> {{ t.status }}</p>
+
+    <p *ngIf="t.overdue" style="color: red;">
+      ⚠ Overdue!
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="returnBook(t)">
+      Return Book
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+</div>
+
+

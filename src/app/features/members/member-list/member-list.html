@@ -1,0 +1,17 @@
+
+<div class="page-container">
+<div class="page-title">Members</div>
+<button mat-raised-button color="primary" routerLink="/members/add" style="margin-bottom: 12px;">
+  + Add Member
+</button>
+
+
+  <mat-card *ngFor="let m of members" style="margin-bottom: 10px;">
+  <mat-card-title>{{ m.name }}</mat-card-title>
+  <mat-card-subtitle>{{ m.email }}</mat-card-subtitle>
+  <mat-card-content>
+    <p><b>Status:</b> {{ m.active ? 'Active' : 'Inactive' }}</p>
+  </mat-card-content>
+</mat-card>
+</div>
+
